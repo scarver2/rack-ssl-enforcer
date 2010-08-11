@@ -10,7 +10,7 @@ module Rack
     def call(env)
       @options[:redirect_to] ||= Rack::Request.new(env).url
       @options[:redirect_to].gsub!(/^http:/,'https:')
-      @options[:message] ||= "You are beeing redirected to #{@options[:redirect_to]}."
+      @options[:message] ||= "You are being redirected to #{@options[:redirect_to]}."
       ssl_request?(env) ? @app.call(env) : [301, {'Location' => @options[:redirect_to]}, @options[:message]]
     end
     
